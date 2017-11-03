@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9BC6D61A-5D4B-4D57-BC6B-5E3F9D04377E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AcumaticaESign</RootNamespace>
+    <AssemblyName>AcumaticaESign</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>6</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CsvHelper">
+      <HintPath>..\..\References\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="DocuSign">
+      <HintPath>..\..\References\DocuSign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2017ESign\Bin\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2017ESign\Bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PX.Common">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2017ESign\Bin\PX.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PX.Data">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2017ESign\Bin\PX.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="PX.OAuthClient">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2017ESign\Bin\PX.OAuthClient.dll</HintPath>
+    </Reference>
+    <Reference Include="PX.Objects">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2017ESign\Bin\PX.Objects.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2017ESign\Bin\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AcumaticaESign\DAC\ESignAccount.cs" />
+    <Compile Include="AcumaticaESign\DAC\ESignAccountUserRule.cs" />
+    <Compile Include="AcumaticaESign\DAC\ESignEnvelopeInfo.cs" />
+    <Compile Include="AcumaticaESign\Descriptor\Constants.cs" />
+    <Compile Include="AcumaticaESign\DAC\ESignRecipient.cs" />
+    <Compile Include="AcumaticaESign\Descriptor\Messages.cs" />
+    <Compile Include="AcumaticaESign\DAC\EnvelopeFilter.cs" />
+    <Compile Include="AcumaticaESign\DAC\VoidRequestFilter.cs" />
+    <Compile Include="AcumaticaESign\ESignAccountEntry.cs" />
+    <Compile Include="AcumaticaESign\Providers\Exception\AcumaticaESignIncorrectFileTypeException.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\AdobeSignClient.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Credentials.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Entities\AccessTokenEntity.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Entities\AgreementCreationEntity.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Entities\AgreementInfoEntity.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Entities\BaseUrisEntity.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Entities\CsvEntity.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Entities\DocumentHistoryEvent.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Entities\NextParticipantInfo.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Entities\NextParticipantSetInfo.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Entities\ParticipantInfo.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Entities\ParticipantSetInfo.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Entities\ReminderCreationResultEntity.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Entities\TransientDocumentEntity.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Entities\ViewUrlEntity.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Enums\AccountType.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Enums\AppliesTo.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Enums\AuthenticationMethod.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Enums\ReminderFrequency.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Enums\Result.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Enums\SignatureFlow.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Enums\UserVerificationStatus.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Exceptions\AdobeSignDocumentWasDeletedException.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Exceptions\AdobeSignEnvelopeWithoutRecipientException.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Exceptions\AdobeSignException.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Exceptions\AdobeSignFieldValidationAggregateException.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Exceptions\AdobeSignForbiddenException.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Exceptions\AdobeSignNotFoundException.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Exceptions\AdobeSignSentToYourselfException.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Exceptions\AdobeSignUnauthorizedException.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Infrastructure\Request.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Infrastructure\RequestBuilder.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Infrastructure\RequestDependencies.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Models\AgreementCreationInfoModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Models\DocumentCreationInfoModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Models\FileInfosModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Models\FileUploadOptions.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Models\InteractiveOptionsModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Models\RecipientSetInfosModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Models\RecipientSetMemberInfosModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Models\ReminderCreationInfoModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Models\SendThroughWebOptions.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Models\URLFileInfoModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Services\AuthenticationService.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Services\BaseApiService.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Services\DocumentsService.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\AdobeSignClientBuilder.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\ESignApiExecutor.cs" />
+    <Compile Include="AR\ARInvoiceESExt.cs" />
+    <Compile Include="CR\CROpportunityESExt.cs" />
+    <Compile Include="PO\POOrderESExt.cs" />
+    <Compile Include="SM\WikiFileMaintenanceESExt.cs" />
+    <Compile Include="AcumaticaESign\ESignDocumentSummaryEnq.cs" />
+    <Compile Include="AcumaticaESign\ESignEnvelopeEnq.cs" />
+    <Compile Include="AcumaticaESign\ESignSyncProcess.cs" />
+    <Compile Include="AcumaticaESign\Helpers\ErrorCodeHelper.cs" />
+    <Compile Include="AcumaticaESign\Providers\DocuSign\Models\ApiErrorModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\DocuSign\Models\BaseRequestModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\DocuSign\Models\CreateEnvelopeRequestModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\DocuSign\Models\CreateEnvelopeResponseModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\DocuSign\Models\GetEnvelopeDocumentResponseModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\DocuSign\Models\GetEnvelopeHistoryResponseModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\DocuSign\Models\UpdateEnvelopeResponseModel.cs" />
+    <Compile Include="AcumaticaESign\Providers\DocuSign\Models\VoidEnvelopeRequestModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AcumaticaESign\Providers\DocuSign\Services\DocuSignService.cs" />
+    <Compile Include="SO\SOOrderESExt.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
