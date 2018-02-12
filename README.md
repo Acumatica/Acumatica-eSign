@@ -113,6 +113,7 @@ Next step is to configure the Adobe Sign user account using eSign Account screen
 3. Assign the account to Acumatica user (This user can send documents for signing using the Docusign account)
 4. Specify the Email and Password for the Docusign account (If you don’t have an DocuSign account, create one first at [DocuSign](http://www.docusign.com))
 5. Click “Connect” to verify the configuration
+6. If you are using sandbox/demo/developer account, you need to check "Use Test API" and specify https://demo.docusign.net/restapi as API URL.
 
 ###	Prepare and Send Document
 With the configuration completed, user can now send documents for signing from within Acumatica. This can be initiated from any Acumatica module (Financials, CRM, Distribution) where files are handled. (See Image below)
