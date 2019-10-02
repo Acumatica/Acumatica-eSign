@@ -7,7 +7,7 @@ namespace AcumaticaESign
     public class POOrderESExt : PXCacheExtension<POOrder>
     {
         [PXMergeAttributes(Method = MergeMethod.Append)]
-        [PXSelector(typeof(Search<PORemitContact.contactID>))]
+        [PXSelector(typeof(Search<PORemitContact.contactID>), ValidateValue = false)]
         public virtual Int32? RemitContactID { get; set; }
     }
 }

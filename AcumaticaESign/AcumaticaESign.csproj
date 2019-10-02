@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AcumaticaESign</RootNamespace>
     <AssemblyName>AcumaticaESign</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -34,33 +34,36 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CsvHelper">
-      <HintPath>..\..\References\CsvHelper.dll</HintPath>
+      <HintPath>..\References\CsvHelper.dll</HintPath>
     </Reference>
     <Reference Include="DocuSign">
-      <HintPath>..\..\References\DocuSign.dll</HintPath>
+      <HintPath>..\References\DocuSign.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2017ESign\Bin\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2017ESign\Bin\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PX.Common">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2017ESign\Bin\PX.Common.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\PX.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PX.CS.Contracts">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\PX.CS.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="PX.Data">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2017ESign\Bin\PX.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\PX.Data.dll</HintPath>
     </Reference>
     <Reference Include="PX.OAuthClient">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2017ESign\Bin\PX.OAuthClient.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\PX.OAuthClient.dll</HintPath>
     </Reference>
     <Reference Include="PX.Objects">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2017ESign\Bin\PX.Objects.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\PX.Objects.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2017ESign\Bin\RestSharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

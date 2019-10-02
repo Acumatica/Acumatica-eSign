@@ -8,6 +8,7 @@ using System.Web.Compilation;
 using CsvHelper;
 using DocuSign.eSign.Model;
 using PX.Common;
+using PX.CS.Contracts.Interfaces;
 using PX.Data;
 using PX.Objects.CR;
 using PX.Objects.CS;

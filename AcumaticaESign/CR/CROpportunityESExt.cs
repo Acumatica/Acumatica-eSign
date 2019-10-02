@@ -7,7 +7,7 @@ namespace AcumaticaESign
     public class CROpportunityESExt : PXCacheExtension<CROpportunity>
     {
         [PXMergeAttributes(Method = MergeMethod.Append)]
-        [PXSelector(typeof(CRContact.contactID))]
+        [PXSelector(typeof(CRContact.contactID), ValidateValue = false)]
         public virtual Int32? OpportunityContactID { get; set; }
     }
 }
