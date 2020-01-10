@@ -196,7 +196,7 @@ namespace AcumaticaESign
         {
         }
 
-        [PXRSACryptString(255, IsUnicode = true)]
+        [PXRSACryptString(500, IsUnicode = true)]
         public virtual string AccessToken
         {
             get;
@@ -211,7 +211,7 @@ namespace AcumaticaESign
         {
         }
 
-        [PXRSACryptString(255, IsUnicode = true)]
+        [PXRSACryptString(500, IsUnicode = true)]
         public virtual string RefreshToken
         {
             get;

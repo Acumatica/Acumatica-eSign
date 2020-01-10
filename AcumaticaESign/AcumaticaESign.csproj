@@ -33,37 +33,44 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CsvHelper">
-      <HintPath>..\References\CsvHelper.dll</HintPath>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\Acumatica19V204\Bin\CsvHelper.dll</HintPath>
     </Reference>
     <Reference Include="DocuSign">
       <HintPath>..\References\DocuSign.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\Acumatica19V204\Bin\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\Acumatica19V204\Bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Common">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\PX.Common.dll</HintPath>
+    <Reference Include="PX.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\Acumatica19V204\Bin\PX.Common.dll</HintPath>
     </Reference>
-    <Reference Include="PX.CS.Contracts">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\PX.CS.Contracts.dll</HintPath>
+    <Reference Include="PX.CS.Contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\Acumatica19V204\Bin\PX.CS.Contracts.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Data">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\PX.Data.dll</HintPath>
+    <Reference Include="PX.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\Acumatica19V204\Bin\PX.Data.dll</HintPath>
     </Reference>
-    <Reference Include="PX.OAuthClient">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\PX.OAuthClient.dll</HintPath>
+    <Reference Include="PX.OAuthClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\Acumatica19V204\Bin\PX.OAuthClient.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Objects">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\PX.Objects.dll</HintPath>
+    <Reference Include="PX.Objects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\Acumatica19V204\Bin\PX.Objects.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\ACM2018ESign\Bin\RestSharp.dll</HintPath>
+    <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\Acumatica19V204\Bin\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -82,6 +89,7 @@
     <Compile Include="AcumaticaESign\DAC\EnvelopeFilter.cs" />
     <Compile Include="AcumaticaESign\DAC\VoidRequestFilter.cs" />
     <Compile Include="AcumaticaESign\ESignAccountEntry.cs" />
+    <Compile Include="AcumaticaESign\Providers\AdobeSign\Models\ExternalIdModel.cs" />
     <Compile Include="AcumaticaESign\Providers\Exception\AcumaticaESignIncorrectFileTypeException.cs" />
     <Compile Include="AcumaticaESign\Providers\AdobeSign\AdobeSignClient.cs" />
     <Compile Include="AcumaticaESign\Providers\AdobeSign\Credentials.cs" />

@@ -500,26 +500,15 @@ namespace AcumaticaESign.SM
         /// <param name="graphExtension"></param>
         private void CreateDefaultRecipients()
         {
-            var noteSet = PXSelectJoin<NoteDoc, InnerJoin<Note, On<NoteDoc.noteID, Equal<Note.noteID>>>,
-                Where<NoteDoc.fileID, Equal<Optional<UploadFileWithIDSelector.fileID>>>,
-                OrderBy<Asc<NoteDoc.entityType>>>.Select(Base, RevisionsWithAction.Current.FileID);
+            var noteSet = PXSelectJoin<Note, InnerJoin<NoteDoc, On<NoteDoc.noteID, Equal<Note.noteID>>>,
+                                    Where<NoteDoc.fileID, Equal<Required<NoteDoc.fileID>>>,
+                                    OrderBy<Asc<NoteDoc.entityType>>>.Select(Base, RevisionsWithAction.Current.FileID);
 
             var listContactIds = new List<object>();
             var eSignRecipients = new List<ESignRecipient>();
 
-            foreach (var pxResult in noteSet.Select(joinResult => joinResult as PXResult<NoteDoc, Note>))
+            foreach (Note note in noteSet)
             {
-                if (pxResult == null)
-                {
-                    return;
-                }
-
-                var note = (Note)pxResult;
-                if (note == null)
-                {
-                    return;
-                }
-
                 var type = PXBuildManager.GetType(note.EntityType, false);
                 if (type != null && note.NoteID.HasValue)
                 {
@@ -736,6 +725,7 @@ namespace AcumaticaESign.SM
                 reminderFrequency = envelope.SendReminders != true ? string.Empty : envelope.ReminderType,
                 signatureType = "ESIGN",
                 ccs = sendRequest.CarbonRecipients.Select(x => x.Email).ToArray(),
+                externalId = new ExternalIdModel { id = String.Format("API_ACUMATICA_{0}", Guid.NewGuid().ToString()) },
                 recipientSetInfos = recipientSetInfos,
                 fileInfos = fileInfosModels
             };
