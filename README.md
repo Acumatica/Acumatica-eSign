@@ -2,7 +2,7 @@
 
 eSign for Acumatica Cloud ERP
 ==================================
-This is a unified eSignature integration for Acumatica Cloud ERP that supports DocuSign and Adobe Sign.
+This is a unified eSignature integration for Acumatica Cloud ERP that supports Adobe Sign and DocuSign.
 
 With the eSign integration for Acumatica Cloud ERP, users can:
 -	Create envelopes and prepare documents for signing
@@ -12,6 +12,11 @@ With the eSign integration for Acumatica Cloud ERP, users can:
 
 Note: Accounts from providers are required to use this integration.
 
+### Adobe Sign
+Adobe Sign, a solution from the trusted digital document leader, makes it simple to collect legal electronic and digital signatures. And it’s just as easy to sign as it is to send — on any device. And it complies with the broadest range of legal requirements, the most demanding industry regulations, and the most stringent security standards around the world.
+
+For pricing please visit: [AdobeSign Pricing](https://acrobat.adobe.com/us/en/sign/pricing/plans.html)
+
 ### DocuSign
 DocuSign provides a complete solution to send, sign and manage documents accelerating the time from lead to deal. With DocuSign, users can quickly and securely review and sign documents.
 With the integration in Acumatica, users can now take advantage of the DocuSign capability from within Acumatica Cloud ERP. Users working on a sales order or an SOW or a contract in an opportunity, can now send it for signing from within Acumatica’s Document management module.
@@ -19,11 +24,6 @@ With the integration in Acumatica, users can now take advantage of the DocuSign 
 For pricing please visit: [DocuSign Pricing](https://www.docusign.com/b/products-and-pricing)
 
 To get Integrator Key, Please visit: [DocuSign Integrator Key](https://www.docusign.com/developer-center/api-overview#go-live)
-
-### Adobe Sign
-Adobe Sign, a solution from the trusted digital document leader, makes it simple to collect legal electronic and digital signatures. And it’s just as easy to sign as it is to send — on any device. And it complies with the broadest range of legal requirements, the most demanding industry regulations, and the most stringent security standards around the world.
-
-For pricing please visit: [AdobeSign Pricing](https://acrobat.adobe.com/us/en/sign/pricing/plans.html)
 
 ### Prerequisites
 * Acumatica 2017 R2 or higher
