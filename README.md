@@ -23,7 +23,7 @@ With the integration in Acumatica, users can now take advantage of the DocuSign 
 
 For pricing please visit: [DocuSign Pricing](https://www.docusign.com/b/products-and-pricing)
 
-To get Integrator Key, Please visit: [DocuSign Integrator Key](https://www.docusign.com/developer-center/api-overview#go-live)
+OPTIONAL: To get Integrator Key, Please visit: [DocuSign Integrator Key](https://www.docusign.com/developer-center/api-overview#go-live) (This is required only if you are planning to enhance integration on your own)
 
 ### Prerequisites
 * Acumatica 2017 R2 or higher
