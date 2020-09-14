@@ -966,7 +966,7 @@ namespace AcumaticaESign.SM
 
             var activity = graph.Tasks.Insert();
             activity.PercentCompletion = 0;
-            activity.OwnerID = envelope.CreatedByID;
+            activity.OwnerID = PXAccess.GetContactID(envelope.CreatedByID);
             activity.Subject = $"Document {fileInfo.FullName} was signed.";
             activity.ClassID = CRActivityClass.Task;
             activity.StartDate = completedDateTime;
