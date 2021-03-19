@@ -17,35 +17,42 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CsvHelper">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\EasyPost2020R2\Bin\CsvHelper.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Acumatica ERP\EP2021R100\Bin\CsvHelper.dll</HintPath>
     </Reference>
     <Reference Include="DocuSign">
       <HintPath>..\References\DocuSign.dll</HintPath>
+      <Private>true</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\EasyPost2020R2\Bin\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Acumatica ERP\EP2021R100\Bin\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\EasyPost2020R2\Bin\Newtonsoft.Json.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Acumatica ERP\EP2021R100\Bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PX.Common">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\EasyPost2020R2\Bin\PX.Common.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Acumatica ERP\EP2021R100\Bin\PX.Common.dll</HintPath>
     </Reference>
+    <Reference Include="PX.Common.Std">
+      <HintPath>C:\Program Files (x86)\Acumatica ERP\EP2021R100\Bin\PX.Common.Std.dll</HintPath>
+    </Reference>
+    <Reference Include="PX.Web.UI">
+      <HintPath>C:\Program Files (x86)\Acumatica ERP\EP2021R100\Bin\PX.Web.UI.dll</HintPath>
+    </Reference>    
     <Reference Include="PX.CS.Contracts">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\EasyPost2020R2\Bin\PX.CS.Contracts.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Acumatica ERP\EP2021R100\Bin\PX.CS.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="PX.Data">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\EasyPost2020R2\Bin\PX.Data.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Acumatica ERP\EP2021R100\Bin\PX.Data.dll</HintPath>
     </Reference>
     <Reference Include="PX.OAuthClient">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\EasyPost2020R2\Bin\PX.OAuthClient.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Acumatica ERP\EP2021R100\Bin\PX.OAuthClient.dll</HintPath>
     </Reference>
     <Reference Include="PX.Objects">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\EasyPost2020R2\Bin\PX.Objects.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Acumatica ERP\EP2021R100\Bin\PX.Objects.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Acumatica ERP\EasyPost2020R2\Bin\RestSharp.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Acumatica ERP\EP2021R100\Bin\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

@@ -14,6 +14,7 @@ using PX.Objects.CR;
 using PX.Objects.CS;
 using PX.SM;
 using PX.Web.UI;
+using Contact = PX.Objects.CR.Contact;
 using FileInfo = PX.SM.FileInfo;
 using Note = PX.Data.Note;
 
@@ -198,7 +199,7 @@ namespace AcumaticaESign.SM
         /// </summary>
         public PXAction<UploadFileWithIDSelector> Refresh;
         [PXUIField(DisplayName = "", MapEnableRights = PXCacheRights.Update, MapViewRights = PXCacheRights.Select, Enabled = true)]
-        [PXButton(ImageKey = Sprite.Main.Refresh)]
+        [PXButton(ImageKey = PX.Web.UI.Sprite.Main.Refresh)]
         public virtual IEnumerable refresh(PXAdapter adapter)
         {
             var fileId = Base.Files.Current.FileID;
