@@ -10,7 +10,7 @@ namespace AcumaticaESign
 
         public string GetLoginPageUrl()
         {
-            return Dependencies.Credentials.ApiUrl + "/public/oauth" +
+            return Dependencies.Credentials.ApiUrl + "/public/oauth/v2" +
                    "?redirect_uri=" + Dependencies.Credentials.RedirectUrl +
                    "&response_type=code" +
                    "&client_id=" + Dependencies.Credentials.ClientId +
@@ -20,7 +20,7 @@ namespace AcumaticaESign
 
         public AccessTokenEntity CreateAccessToken(string authorizationCode)
         {
-            return new RequestBuilder(Dependencies, Method.POST, "oauth/token")
+            return new RequestBuilder(Dependencies, Method.POST, "oauth/v2/token")
                 .AddFormContentTypeHeader()
                 .AddQueryParameter("code", authorizationCode)
                 .AddQueryParameter("client_id", Dependencies.Credentials.ClientId)
@@ -32,7 +32,7 @@ namespace AcumaticaESign
 
         public AccessTokenEntity RefreshAccessToken()
         {
-            return new RequestBuilder(Dependencies, Method.POST, "/oauth/refresh")
+            return new RequestBuilder(Dependencies, Method.POST, "/oauth/v2/refresh")
                 .AddFormContentTypeHeader()
                 .AddQueryParameter("grant_type", "refresh_token")
                 .AddQueryParameter("client_id", Dependencies.Credentials.ClientId)

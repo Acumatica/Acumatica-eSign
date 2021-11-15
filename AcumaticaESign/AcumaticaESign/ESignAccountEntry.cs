@@ -74,11 +74,16 @@ namespace AcumaticaESign
 
         public void SetAdobeApiUrl(string apiUrl)
         {
-            var account = Accounts.Current;
-            account.ApiAccessPoint = apiUrl;
+            // For OAuth v1, parameter apiUrl contains the API access point from ESign.aspx page request query string
+            // For OAuth v2, access point is not in query string, the value is in API call CreateAccessToken body response
+            if (!string.IsNullOrWhiteSpace(apiUrl))
+            {
+                var account = Accounts.Current;
+                account.ApiAccessPoint = apiUrl;
 
-            Accounts.Update(account);
-            Actions.PressSave();
+                Accounts.Update(account);
+                Actions.PressSave();
+            }
         }
 
         public void GetAccessToken(string code)
@@ -106,6 +111,7 @@ namespace AcumaticaESign
             account.AccessToken = accessToken.access_token;
             account.RefreshToken = accessToken.refresh_token;
             account.Status = Messages.ESignIntegrationStatus.Connected;
+            account.ApiAccessPoint = accessToken.api_access_point;
 
             Accounts.Update(account);
             Actions.PressSave();

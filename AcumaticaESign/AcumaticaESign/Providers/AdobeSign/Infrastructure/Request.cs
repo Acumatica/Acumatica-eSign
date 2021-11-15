@@ -77,7 +77,7 @@ namespace AcumaticaESign
         {
             foreach (var pair in QueryParameters)
             {
-                request.AddParameter(pair.Key, pair.Value, ParameterType.QueryString);
+                request.AddParameter(pair.Key, pair.Value);
             }
         }
 
