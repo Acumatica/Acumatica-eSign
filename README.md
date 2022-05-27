@@ -33,7 +33,7 @@ Getting Started
 
 ### Install eSign Customization Project
 
-1. Download AcumaticaESignIntegration.zip from [Acumatica Partner Portal](https://portal.acumatica.com/downloads/esign-integration-download-2/)
+1. Download AcumaticaESignIntegration.zip from [Acumatica Community](https://community.acumatica.com/add-ons-and-integrations-66/esign-integration-6592)
 2. In your Acumatica ERP instance, import this as a customization project
 3. Publish the customization project
 
