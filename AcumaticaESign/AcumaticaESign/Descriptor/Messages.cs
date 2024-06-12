@@ -148,7 +148,7 @@ namespace AcumaticaESign
         public static class ESignProviderType
         {
             public const string DocuSign = "DocuSign";
-            public const string AdobeSign = "AdobeSign";
+            public const string AdobeSign = "AcrobatSign";
         }
 
         public static class ESignAccountType
@@ -224,6 +224,8 @@ namespace AcumaticaESign
 
         #region Validation messages
 
+        public const string ConnectionSuccess = "The connection to the eSign provider was successful.";
+
         public const string EnvelopeStatusChanged =
             "This document was already sent previously. Please refresh your screen to see latest status information.";
 
@@ -250,10 +252,10 @@ namespace AcumaticaESign
 
         public const string DocumentWasDeletedMessage = "Document was deleted from web version.";
         public const string EnvelopeWithoutRecipientMessage = "You cannot send a document without recipient.";
-        public const string MessagePattern = "Unsupported values ({0}) have been sent to Adobe Sign.";
+        public const string MessagePattern = "Unsupported values ({0}) have been sent to Acrobat Sign.";
         public const string AccessIsNotAllowedMessage = "Access is not allowed.";
         public const string InvalidFileTypeMessage = "Invalid file type chosen for E Sign.";
-        public const string NotFoundMessage = "Adobe Sign entity has not been found.";
+        public const string NotFoundMessage = "Acrobat Sign entity has not been found.";
         public const string SentToYourselfMessage = "You cannot send a document only to yourself to complete.";
 
         #endregion

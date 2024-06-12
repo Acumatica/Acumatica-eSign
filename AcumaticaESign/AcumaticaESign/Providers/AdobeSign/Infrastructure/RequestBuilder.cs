@@ -98,13 +98,13 @@ namespace AcumaticaESign
             return HandleResponse(() => Request.Execute<T>(), checkStatusCode).Data;
         }
 
-        public IRestResponse Execute(bool checkStatusCode = true)
+        public RestResponse Execute(bool checkStatusCode = true)
         {
             return HandleResponse(() => Request.Execute(), checkStatusCode);
         }
 
         private T HandleResponse<T>(Func<T> getResponse, bool checkStatusCode)
-            where T : IRestResponse
+            where T : RestResponse
         {
             var response = getResponse();
 
@@ -113,7 +113,7 @@ namespace AcumaticaESign
             return response;
         }
 
-        private void HandleStatusCode(IRestResponse response, bool required)
+        private void HandleStatusCode(RestResponse response, bool required)
         {
             if (required && !expectedStatuses.Contains(response.StatusCode))
             {
@@ -134,7 +134,7 @@ namespace AcumaticaESign
             }
         }
 
-        private void HandleValidationErrors(IRestResponse response)
+        private void HandleValidationErrors(RestResponse response)
         {
             dynamic errors = null;
             string message = null;

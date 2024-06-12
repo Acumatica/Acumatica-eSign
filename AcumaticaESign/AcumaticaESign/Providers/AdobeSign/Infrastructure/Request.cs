@@ -21,13 +21,13 @@ namespace AcumaticaESign
         public Dictionary<string, byte[]> FileParameters { get; } = new Dictionary<string, byte[]>();
         public Dictionary<string, object> UrlParameters { get; set; } = new Dictionary<string, object>();
 
-        public IRestResponse Execute()
+        public RestResponse Execute()
         {
             var request = BuildRestRequest();
             return Dependencies.RestClient.Execute(request);
         }
 
-        public IRestResponse<T> Execute<T>()
+        public RestResponse<T> Execute<T>()
             where T : new()
         {
             var request = BuildRestRequest();
@@ -49,7 +49,7 @@ namespace AcumaticaESign
             return request;
         }
 
-        private void AddUseFormContentTypeHeader(IRestRequest request)
+        private void AddUseFormContentTypeHeader(RestRequest request)
         {
             if (UseFormContentTypeHeader)
             {
@@ -57,7 +57,7 @@ namespace AcumaticaESign
             }
         }
 
-        private void AddAuthorizationHeader(IRestRequest request)
+        private void AddAuthorizationHeader(RestRequest request)
         {
             if (UseAuthorizationHeader)
             {
@@ -65,7 +65,7 @@ namespace AcumaticaESign
             }
         }
 
-        private void AddDownloadParameter(IRestRequest request)
+        private void AddDownloadParameter(RestRequest request)
         {
             if (IsDownload)
             {
@@ -73,15 +73,15 @@ namespace AcumaticaESign
             }
         }
 
-        private void AddQueryParameters(IRestRequest request)
+        private void AddQueryParameters(RestRequest request)
         {
             foreach (var pair in QueryParameters)
             {
-                request.AddParameter(pair.Key, pair.Value);
+                request.AddParameter(pair.Key, pair.Value.ToString());
             }
         }
 
-        private void AddUrlSegment(IRestRequest request)
+        private void AddUrlSegment(RestRequest request)
         {
             foreach (var pair in UrlParameters)
             {
@@ -89,15 +89,15 @@ namespace AcumaticaESign
             }
         }
 
-        private void AddFileParameters(IRestRequest request)
+        private void AddFileParameters(RestRequest request)
         {
             foreach (var pair in FileParameters)
             {
-                request.AddFileBytes("File", pair.Value, pair.Key);
+                request.AddFile("File", pair.Value, pair.Key);
             }
         }
 
-        private void AddBodyParameters(IRestRequest request)
+        private void AddBodyParameters(RestRequest request)
         {
             if (BodyParameters.Count > 0)
             {

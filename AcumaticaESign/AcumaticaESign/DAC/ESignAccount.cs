@@ -590,7 +590,7 @@ namespace AcumaticaESign
         public static class ProviderTypesIconPath
         {
             public const string DocuSign = "~/Icons/DocuSignIcon.png";
-            public const string AdobeSign = "~/Icons/AdobeSignIcon.png";
+            public const string AdobeSign = "~/Icons/AcrobatSignIcon.png";
             public const string Empty = "";
         }
 

@@ -12,7 +12,7 @@ namespace AcumaticaESign
 
         public TransientDocumentEntity SendDocument(Byte[] file, string fileName)
         {
-            return new RequestBuilder(Dependencies, Method.POST, "/transientDocuments")
+            return new RequestBuilder(Dependencies, Method.Post, "/transientDocuments")
                 .AddAuthorizationHeader()
                 .AddFileParameter(fileName, file)
                 .Execute<TransientDocumentEntity>();
@@ -20,7 +20,7 @@ namespace AcumaticaESign
 
         public AgreementCreationEntity CreateAgreement(AgreementCreationInfoModel model)
         {
-            return new RequestBuilder(Dependencies, Method.POST, "/agreements")
+            return new RequestBuilder(Dependencies, Method.Post, "/agreements")
                 .AddAuthorizationHeader()
                 .AddBodyParameter("options", model.options)
                 .AddBodyParameter("documentCreationInfo", model.documentCreationInfo)
@@ -29,7 +29,7 @@ namespace AcumaticaESign
 
         public object CancelAgreement(string agreementId, string comment)
         {
-            return new RequestBuilder(Dependencies, Method.PUT, "/agreements/{agreementId}/status")
+            return new RequestBuilder(Dependencies, Method.Put, "/agreements/{agreementId}/status")
                 .AddAuthorizationHeader()
                 .AddUrlSegment("agreementId", agreementId)
                 .AddBodyParameter("comment", comment)
@@ -40,7 +40,7 @@ namespace AcumaticaESign
 
         public object DeleteAgreement(string agreementId)
         {
-            return new RequestBuilder(Dependencies, Method.DELETE, "/agreements/{agreementId}")
+            return new RequestBuilder(Dependencies, Method.Delete, "/agreements/{agreementId}")
                 .AddAuthorizationHeader()
                 .AddUrlSegment("agreementId", agreementId)
                 .Execute();
@@ -48,7 +48,7 @@ namespace AcumaticaESign
 
         public ReminderCreationResultEntity SendReminder(ReminderCreationInfoModel model)
         {
-            return new RequestBuilder(Dependencies, Method.POST, "/reminders")
+            return new RequestBuilder(Dependencies, Method.Post, "/reminders")
                 .AddAuthorizationHeader()
                 .AddBodyParameter("agreementId", model.agreementId)
                 .AddBodyParameter("comment", model.comment)
@@ -57,7 +57,7 @@ namespace AcumaticaESign
 
         public AgreementInfoEntity GetAgreementStatus(string agreementId)
         {
-            return new RequestBuilder(Dependencies, Method.GET, "/agreements/{agreementId}")
+            return new RequestBuilder(Dependencies, Method.Get, "/agreements/{agreementId}")
                 .AddAuthorizationHeader()
                 .AddUrlSegment("agreementId", agreementId)
                 .Execute<AgreementInfoEntity>();
@@ -65,7 +65,7 @@ namespace AcumaticaESign
 
         public byte[] GetAgreement(string agreementId)
         {
-            IRestRequest request = new RequestBuilder(Dependencies, Method.GET, "/agreements/{agreementId}/combinedDocument")
+            RestRequest request = new RequestBuilder(Dependencies, Method.Get, "/agreements/{agreementId}/combinedDocument")
                .AddAuthorizationHeader()
                .AddDownloadParameter()
                .AddUrlSegment("agreementId", agreementId).Request.BuildRestRequest();
@@ -74,7 +74,7 @@ namespace AcumaticaESign
 
         public byte[] GetAgreementFormData(string agreementId)
         {
-            IRestRequest request = new RequestBuilder(Dependencies, Method.GET, "/agreements/{agreementId}/formData")
+            RestRequest request = new RequestBuilder(Dependencies, Method.Get, "/agreements/{agreementId}/formData")
                .AddAuthorizationHeader()
                .AddDownloadParameter()
                .AddUrlSegment("agreementId", agreementId).Request.BuildRestRequest();
@@ -83,7 +83,7 @@ namespace AcumaticaESign
 
         public ViewUrlEntity GetAgreementAssets(string agreementId)
         {
-            return new RequestBuilder(Dependencies, Method.POST, "/views/agreementAssets")
+            return new RequestBuilder(Dependencies, Method.Post, "/views/agreementAssets")
                 .AddAuthorizationHeader()
                 .AddDownloadParameter()
                 .AddBodyParameter("agreementAssetId", agreementId)

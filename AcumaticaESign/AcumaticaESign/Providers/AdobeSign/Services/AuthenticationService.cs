@@ -20,7 +20,7 @@ namespace AcumaticaESign
 
         public AccessTokenEntity CreateAccessToken(string authorizationCode)
         {
-            return new RequestBuilder(Dependencies, Method.POST, "oauth/v2/token")
+            return new RequestBuilder(Dependencies, Method.Post, "oauth/v2/token")
                 .AddFormContentTypeHeader()
                 .AddQueryParameter("code", authorizationCode)
                 .AddQueryParameter("client_id", Dependencies.Credentials.ClientId)
@@ -32,7 +32,7 @@ namespace AcumaticaESign
 
         public AccessTokenEntity RefreshAccessToken()
         {
-            return new RequestBuilder(Dependencies, Method.POST, "/oauth/v2/refresh")
+            return new RequestBuilder(Dependencies, Method.Post, "/oauth/v2/refresh")
                 .AddFormContentTypeHeader()
                 .AddQueryParameter("grant_type", "refresh_token")
                 .AddQueryParameter("client_id", Dependencies.Credentials.ClientId)

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web.Compilation;
+using System.Globalization;
 using CsvHelper;
 using DocuSign.eSign.Model;
 using PX.Common;
@@ -679,7 +680,7 @@ namespace AcumaticaESign.SM
         private static void UpdateSentAdobeSignEnvelope(ESignEnvelopeInfo envelope, AgreementCreationEntity sendEnvelope)
         {
             envelope.EnvelopeID = sendEnvelope.agreementId;
-            envelope.SendDate = DateTime.Now;
+            envelope.SendDate = PXTimeZoneInfo.Now;
             envelope.LastStatus = EnvelopeStatus.AdobeSign.Authoring;
             envelope.ReviewUrl = sendEnvelope.url;
         }
@@ -783,7 +784,10 @@ namespace AcumaticaESign.SM
         private static void UpdateEnvelope(ESignEnvelopeInfo envelope,
             GetEnvelopeHistoryResponseModel history, WikiFileMaintenanceESExt graph)
         {
-            envelope.ActivityDate = DateTime.Parse(history.Envelope.LastModifiedDateTime);
+            //LastModifiedDateTime is in string. DateTime.Parse method converts the string time to system time zone as per C# culture info.
+			//Using this overload converts the string to UTC time and convert the UTC time to Acumatica time zone using ConvertFromUTCtoUserProfileTime method.
+			//UseTimeZone attribute on ActivityDate will convert the local time to UTC/UTC time to local while performing get/set operations
+            envelope.ActivityDate = ConvertFromUTCtoUserProfileTime(DateTime.Parse(history.Envelope.LastModifiedDateTime, PXCultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal));
             envelope.LastStatus = history.Envelope.Status;
             envelope.MessageBody = history.Envelope.EmailBlurb;
             envelope.Theme = history.Envelope.EmailSubject;
@@ -793,9 +797,10 @@ namespace AcumaticaESign.SM
             envelope.ReminderFrequency = int.Parse(history.Notification.Reminders.ReminderFrequency);
             envelope.SendReminders = bool.Parse(history.Notification.Reminders.ReminderEnabled);
 
-            DateTime expirationDate;
-            envelope.ExpirationDate = DateTime.TryParse(history.Envelope.SentDateTime, out expirationDate)
-                ? expirationDate.AddDays(envelope.ExpiredDays.Value)
+            //DateTime.Parse method converts the time to local time(system time). Convert the time to UTC time zone and then call method ConvertToUserProfileTimeZone
+			DateTime expirationDate;
+            envelope.ExpirationDate = DateTime.TryParse(history.Envelope.SentDateTime, PXCultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal, out expirationDate)
+                ? ConvertFromUTCtoUserProfileTime(expirationDate.AddDays(envelope.ExpiredDays.Value))
                 : envelope.SendDate?.AddDays(envelope.ExpiredDays.Value);
 
             graph.Envelope.Update(envelope);
@@ -811,10 +816,10 @@ namespace AcumaticaESign.SM
                     Name = carbonCopy.Name,
                     Status = carbonCopy.Status,
                     DeliveredDateTime = carbonCopy.DeliveredDateTime != null
-                        ? Convert.ToDateTime(carbonCopy.DeliveredDateTime)
+                        ? ConvertFromUTCtoUserProfileTime(DateTime.Parse(carbonCopy.DeliveredDateTime, PXCultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal))
                         : default(DateTime?),
                     SignedDateTime = carbonCopy.SignedDateTime != null
-                        ? Convert.ToDateTime(carbonCopy.SignedDateTime)
+                        ? ConvertFromUTCtoUserProfileTime(DateTime.Parse(carbonCopy.SignedDateTime, PXCultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal))
                         : default(DateTime?),
                     Type = ESignRecipient.RecipientTypes.CopyRecipient,
                     CustomMessage = carbonCopy.Note,
@@ -837,10 +842,10 @@ namespace AcumaticaESign.SM
                     Name = signer.Name,
                     Status = signer.Status,
                     DeliveredDateTime = signer.DeliveredDateTime != null
-                        ? Convert.ToDateTime(signer.DeliveredDateTime)
+                         ? ConvertFromUTCtoUserProfileTime(DateTime.Parse(signer.DeliveredDateTime, PXCultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal))
                         : default(DateTime?),
                     SignedDateTime = signer.SignedDateTime != null
-                        ? Convert.ToDateTime(signer.SignedDateTime)
+                        ? ConvertFromUTCtoUserProfileTime(DateTime.Parse(signer.SignedDateTime, PXCultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal))
                         : default(DateTime?),
                     Type = ESignRecipient.RecipientTypes.Signer,
                     CustomMessage = signer.Note,
@@ -885,8 +890,8 @@ namespace AcumaticaESign.SM
                             ? GetSignerName(envelope.EnvelopeID, signer.participantSetMemberInfos[0].email, client)
                             : null,
                         Status = signer.status.ToLower(),
-                        DeliveredDateTime = GetDeliveredDateTime(info.events, signer.participantSetMemberInfos[0].email)?.ToLocalTime(),
-                        SignedDateTime = GetSignedDateTime(info.events, signer.participantSetMemberInfos[0].email)?.ToLocalTime(),
+                        DeliveredDateTime = ConvertFromUTCtoUserProfileTime(GetDeliveredDateTime(info.events, signer.participantSetMemberInfos[0].email)),
+                        SignedDateTime = ConvertFromUTCtoUserProfileTime(GetSignedDateTime(info.events, signer.participantSetMemberInfos[0].email)),
                         Type = signer.roles.Contains("\"SIGNER\"")
                             ? ESignRecipient.RecipientTypes.Signer
                             : ESignRecipient.RecipientTypes.CopyRecipient,
@@ -907,7 +912,7 @@ namespace AcumaticaESign.SM
             var str = System.Text.Encoding.Default.GetString(agreementFormData);
             using (TextReader sr = new System.IO.StringReader(str))
             {
-                var csv = new CsvReader(sr);
+                var csv = new CsvReader(sr, CultureInfo.InvariantCulture);
                 var records = csv.GetRecords<CsvEntity>().ToList();
                 foreach (var record in records)
                 {
@@ -1246,10 +1251,9 @@ namespace AcumaticaESign.SM
         {
             var sendRequest = CreateSendRequestModel(account, graphEsExt);
             var sendResponse = dsService.CreateEnvelope(sendRequest);
-
             envelope.EnvelopeID = sendResponse.EnvelopeSummary.EnvelopeId;
-            envelope.ActivityDate = DateTime.Parse(sendResponse.EnvelopeSummary.StatusDateTime);
-            envelope.SendDate = DateTime.Parse(sendResponse.EnvelopeSummary.StatusDateTime);
+            envelope.ActivityDate = ConvertFromUTCtoUserProfileTime(DateTime.Parse(sendResponse.EnvelopeSummary.StatusDateTime, PXCultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal));
+            envelope.SendDate = envelope.ActivityDate;
             envelope.LastStatus = sendResponse.EnvelopeSummary.Status;
 
             graphEsExt.Envelope.Update(envelope);
@@ -1261,11 +1265,11 @@ namespace AcumaticaESign.SM
         private static void UpdateEnvelope(ESignEnvelopeInfo envelope, AgreementInfoEntity history,
             WikiFileMaintenanceESExt graph)
         {
-            envelope.ActivityDate = history.events.OrderByDescending(x => x.date).First().date.ToLocalTime();
+            envelope.ActivityDate = ConvertFromUTCtoUserProfileTime(history.events.OrderByDescending(x => x.date).First().date);
             envelope.LastStatus = history.status;
             envelope.MessageBody = history.message;
             envelope.Theme = history.name;
-            envelope.ExpirationDate = history.expiration;
+            envelope.ExpirationDate = ConvertFromUTCtoUserProfileTime(history.expiration);
 
             graph.Envelope.Update(envelope);
         }
@@ -1346,6 +1350,18 @@ namespace AcumaticaESign.SM
                     Equal<Required<ESignEnvelopeInfo.envelopeInfoID>>>>(maintenanceGraph)
                 .SelectSingle(envelopeInfoId);
         }
+
+		private static DateTime? ConvertFromUTCtoUserProfileTime(DateTime? date)
+		{
+			//pass the UTC time to this method. Returns time converted to Acumatica instance's configured timezone.
+			//The UseTimeZone attribute on the DAC fields will then save the time converted to UTC as per this time zone and retrieve the time in local time to show on UI
+			if (date != null)
+			{
+				return PXTimeZoneInfo.ConvertTimeFromUtc(date.Value, LocaleInfo.GetTimeZone());
+			}
+
+			return null;
+		}
 
         #endregion
     }

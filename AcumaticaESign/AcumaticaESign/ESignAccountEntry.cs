@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.SignalR.Infrastructure;
+﻿using Microsoft.AspNetCore.SignalR;
 using PX.Data;
 using PX.Data.DependencyInjection;
 using PX.OAuthClient.Hubs;
@@ -9,7 +9,7 @@ namespace AcumaticaESign
     public class ESignAccountEntry : PXGraph<ESignAccountEntry, ESignAccount>, IGraphWithInitialization
     {
         [InjectDependency]
-        private IConnectionManager _signalRConnectionManager { get; set; }
+		private IHubContext<RefreshHub> _signalRConnectionManager { get; set; }
 
         public void Initialize()
         {
@@ -50,6 +50,7 @@ namespace AcumaticaESign
                     throw new PXException(Messages.ProviderTypeIsMissing);
             }
         }
+
 
         public PXAction<ESignAccount> Disconnect;
         [PXButton]
@@ -287,8 +288,7 @@ namespace AcumaticaESign
 
         private void SendRefreshCall()
         {
-            var hubContext = _signalRConnectionManager.GetHubContext<RefreshHub>();
-            hubContext.Clients.All.RefreshPage();
+            _signalRConnectionManager?.Clients?.All?.SendCoreAsync("refreshScreen", null);
         }
 
         private static bool IsDisconnected(ESignAccount account)
@@ -300,12 +300,10 @@ namespace AcumaticaESign
         {
             var companyId = PXAccess.GetCompanyName();
             var client = AdobeSignClientBuilder.BuildUnauthorized(account, companyId);
-            PXLongOperation.StartOperation(this, () =>
-            {
-                var loginUrl = client.Authentication.GetLoginPageUrl();
-                throw new PXRedirectToUrlException(loginUrl, PXBaseRedirectException.WindowMode.InlineWindow,
-                    string.Empty, false);
-            });
+
+            var loginUrl = client.Authentication.GetLoginPageUrl();
+            throw new PXRedirectToUrlException(loginUrl, PXBaseRedirectException.WindowMode.InlineWindow,
+                string.Empty, false);
         }
 
         private void AuthenticateDocuSignAccount(ESignAccount account)
